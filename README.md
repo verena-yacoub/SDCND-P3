@@ -26,10 +26,10 @@ The goals / steps of this project are the following:
 #### 1. Submission includes all required files and can be used to run the simulator in autonomous mode
 
 My project includes the following files:
-* model.py containing the script to create and train the model
-* drive.py for driving the car in autonomous mode
-* model.h5 containing a trained convolution neural network 
-* README.md or summarizing the results
+* **model.py** containing the script to create and train the model
+* **drive.py** for driving the car in autonomous mode
+* **model.h5** containing a trained convolution neural network 
+* **README.md** or summarizing the results
 
 #### 2. Submission includes functional code
 Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing 
@@ -45,9 +45,20 @@ The model.py file contains the code for training and saving the convolution neur
 
 #### 1. An appropriate model architecture has been employed
 
-My model consists of a convolution neural network with 3x3 filter sizes and depths between 32 and 128 (model.py lines 18-24) 
+The structure of the neural network was adopted from [NVIDIA self driving car model](https://devblogs.nvidia.com/deep-learning-self-driving-cars/) and was implemented as follows, [as per the code](https://github.com/verena-yacoub/SDCND-P3/blob/master/model.py#L69-L80):
 
-The model includes RELU layers to introduce nonlinearity (code line 20), and the data is normalized in the model using a Keras lambda layer (code line 18). 
+* normalization layer using lambda function
+* cropping layer to remove irrelevant parts like sky and trees 
+* 5x5 convolution layer with stride 2 and depth of 24
+* 5x5 convolution layer with stride 2 and depth of 36
+* 5x5 convolution layer with stride 2 and depth of 48
+* 3x3 convolution layer with depth of 64
+* 3x3 convolution layer with depth of 64
+* flatten the output 
+* fully connected layer with 100 outputs
+* a fully connected layer with 50 outputs
+* a fully connected layer with 10 outputs
+* a fully connected layer with 1 output
 
 #### 2. Attempts to reduce overfitting in the model
 
@@ -57,7 +68,7 @@ The model was trained and validated on different data sets to ensure that the mo
 
 #### 3. Model parameter tuning
 
-The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 25).
+The model used an adam optimizer
 
 #### 4. Appropriate training data
 
