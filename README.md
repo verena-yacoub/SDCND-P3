@@ -8,6 +8,9 @@ The goals / steps of this project are the following:
 * Test that the model successfully drives around track one without leaving the road
 * Summarize the results with a written report
 ---
+[//]: # (Image References)
+
+[image1]: ./data_example.jpg 
 
 ## Rubric Points Discussion 
 ---
@@ -67,6 +70,8 @@ The model used an [adam optimizer](https://github.com/verena-yacoub/SDCND-P3/blo
 
 * Training data was created by taking almost 2 laps around track one, while keeping the car centered as much as possible and occasionally recovering from left/right drifts for the model to learn handling different cases.
 
+* The figure below shows a sample of raw and manipulated training data
+![alt text][image1]
 
 ### Notes and discussion:
 1- While loading stirring measurment angles, readings were emphased by a factor of 0.2 for the right and left images which resulted in a better response of the model at recovering from drifts 
