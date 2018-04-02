@@ -9,11 +9,6 @@ The goals / steps of this project are the following:
 * Summarize the results with a written report
 ---
 
-[//]: # (Image References)
-
-[image1]: ./examples/placeholder.png "Model Visualization"
-
-
 ## Rubric Points Discussion 
 ---
 ### Files Submitted & Code Quality
@@ -40,7 +35,7 @@ The model.py file contains the code for training and saving the convolution neur
 
 #### 1. An appropriate model architecture has been employed
 
-The structure of the neural network was adopted from [NVIDIA self driving car model](https://devblogs.nvidia.com/deep-learning-self-driving-cars/) and was implemented as follows, [as per the code](https://github.com/verena-yacoub/SDCND-P3/blob/master/model.py#L69-L80):
+The structure of the neural network was adopted from [NVIDIA self driving car model](https://devblogs.nvidia.com/deep-learning-self-driving-cars/) and was implemented as follows, [in the code](https://github.com/verena-yacoub/SDCND-P3/blob/master/model.py#L69-L80):
 
 * normalization layer using lambda function
 * cropping layer to remove irrelevant parts like sky and trees 
@@ -55,9 +50,12 @@ The structure of the neural network was adopted from [NVIDIA self driving car mo
 * a fully connected layer with 10 outputs
 * a fully connected layer with 1 output
 
+A callback of early stopping was used to prevent worsening of the model.
+
 #### 2. Attempts to reduce overfitting in the model
 
 * The main strategy to avoid overfitting was [data augmentation](https://github.com/verena-yacoub/SDCND-P3/blob/master/model.py#L49-L58) by flipping, thresholding, and brightness enhancement.
+* number of epochs was reduced to 3 
 * The data was then [split](https://github.com/verena-yacoub/SDCND-P3/blob/master/model.py#L85) into 80% training and 20% validation 
 * The model was examined in track one of the simulator and did not get off road 
 
@@ -68,11 +66,19 @@ The model used an [adam optimizer](https://github.com/verena-yacoub/SDCND-P3/blo
 #### 4. Appropriate training data
 
 * Training data was created by taking almost 2 laps around track one, while keeping the car centered as much as possible and occasionally recovering from left/right drifts for the model to learn handling different cases.
-* The aforementioned data augmentation process is shown in the figure below.
-![alt text][image1]
 
 
 ### Notes and discussion:
 1- While loading stirring measurment angles, readings were emphased by a factor of 0.2 for the right and left images which resulted in a better response of the model at recovering from drifts 
-*Diving deeper into this...:* we can find that +0.2 was [added](https://github.com/verena-yacoub/SDCND-P3/blob/master/model.py#L43) with the left side photos and -0.2 was [substracted](https://github.com/verena-yacoub/SDCND-P3/blob/master/model.py#L43) with the right side photos
+
+* Diving deeper into this...:* we can find that +0.2 was [added](https://github.com/verena-yacoub/SDCND-P3/blob/master/model.py#L43) with the left side photos emphasing clockwise recovery and -0.2 was [substracted](https://github.com/verena-yacoub/SDCND-P3/blob/master/model.py#L43) with the right side photos emphasing anti-clockwise recovery.
+
+2- Although in this model the car did not go totally out of track, it happened twice that it stepped on the road line and has done a corrective motion!
+
+3- To enhance this project more data (from the first and the second track) has to be fed to train the model, and this might only be possible with the help of python generators implemented in [this code](https://github.com/verena-yacoub/SDCND-P3/blob/master/model_with_generator.py) as data storage will be memory consuming.
+
+### References:
+* Udacity classroom
+* Guiding reference for Nvidia architecture: https://github.com/darienmt/CarND-Behavioral-Cloning-P3
+* Reference for measurment manipulation: https://github.com/abdelrahman-osama/CarND-BehaviouralCloning-P3
 
