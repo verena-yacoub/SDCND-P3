@@ -82,6 +82,11 @@ The model used an [adam optimizer](https://github.com/verena-yacoub/SDCND-P3/blo
 
 3- To enhance this project more data (from the first and the second track) has to be fed to train the model, and this might only be possible with the help of python generators implemented in [this code](https://github.com/verena-yacoub/SDCND-P3/blob/master/model_with_generator.py) as data storage will be memory consuming.
 
+### Notes for resubmission:
+* The new model is uploaded [here](https://github.com/verena-yacoub/SDCND-P3/blob/master/model_resubmission.h5)
+this model was generated from the code after some modifications including the addition of [dropout](https://github.com/verena-yacoub/SDCND-P3/blob/master/model_resubmission.py#L78) and [activation](https://github.com/verena-yacoub/SDCND-P3/blob/master/model_resubmission.py#L80) layers.
+* As seen from the video the bug of touching the lana lines is fixed 
+
 ### References:
 * Udacity classroom
 * Guiding reference for Nvidia architecture: https://github.com/darienmt/CarND-Behavioral-Cloning-P3
